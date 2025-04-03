@@ -38,12 +38,12 @@ export default function SignInForm() {
           password: data.password,
         }),
       });
-
+  
       const result = await response.json();
-
+  
       if (response.ok) {
-        alert("Login successful");
-        window.location.href = "/";
+        localStorage.setItem('token', result.token); // Guardar token
+        window.location.href = "/"; // Redirigir a home
       } else {
         alert(result.message || "Login failed");
       }
